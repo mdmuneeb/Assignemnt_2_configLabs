@@ -67,6 +67,7 @@ let createTodoHTML = (data, List) =>{
     let mainTag2 = document.createElement("div");
     let iTag1 = document.createElement("i");
     let iTag2 = document.createElement("i");
+    let iTag3 = document.createElement("i");
 
     mainTag1.classList.add("p-3", "pt-4", "mb-2", "d-flex", "justify-content-between", "align-items-center", "fs-5");
     mainTag1.style.color = "#9E78CF";
@@ -76,8 +77,9 @@ let createTodoHTML = (data, List) =>{
     
     mainTag2.classList.add("d-flex", "justify-content-around", "gap-4", "fs-4");
     
-    iTag1.classList.add("fa-duotone", "fa-solid", "fa-check");
+    iTag1.classList.add("fa-sharp", "fa-solid", "fa-check");
     iTag2.classList.add("fa-solid", "fa-trash");
+    iTag3.classList.add("fa-solid", "fa-pencil")
 
     iTag1.addEventListener("click", ()=>{
         moveToDoneTask(data)
@@ -86,12 +88,17 @@ let createTodoHTML = (data, List) =>{
     iTag2.addEventListener("click", ()=>{
         Delete(data, List)
     })
+
+    iTag3.addEventListener("click", ()=>{
+        editTodoTask(data)
+    })
     
     mainTag1.appendChild(mainPTag);
     mainTag1.appendChild(mainTag2);
     
-    mainTag2.appendChild(iTag1);
+    mainTag2.appendChild(iTag3);
     mainTag2.appendChild(iTag2);
+    mainTag2.appendChild(iTag1);
     
     mainPTag.textContent = data;
     
@@ -143,6 +150,18 @@ let moveToDoneTask = (data) => {
     setTodoLocal(newList2);
     getTodoLocal();
     getDoneLocal();
+}
+
+let editTodoTask = (task) =>{
+    let editInputUser = prompt("Enter: ")
+    debugger;
+    let editTask = todoArray.map((v,i)=>{
+        if(v === task){
+            return v = editInputUser
+        }
+    })
+    setTodoLocal(editTask);
+    getTodoLocal();
 }
 
 
