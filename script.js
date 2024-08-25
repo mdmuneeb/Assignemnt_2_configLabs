@@ -154,7 +154,6 @@ let moveToDoneTask = (data) => {
 
 let editTodoTask = (task) =>{
     let editInputUser = prompt("Enter: ")
-    debugger;
     let editTask = todoArray.map((v,i)=>{
         if(v === task){
             return v = editInputUser
